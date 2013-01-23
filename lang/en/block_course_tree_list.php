@@ -37,5 +37,7 @@ $string['weeksbefore'] = 'Weeks Before';
 $string['descweeksbefore'] = 'If a category contains a class, how many weeks before the class to default the category open.';
 $string['weeksafter'] = 'Weeks After';
 $string['descweeksafter'] = 'If a category contains a class, how many weeks after the class to default the category open.';
+$string['showcourses'] = 'Show courses';
+$string['descshowcourses'] = 'Display courses under the course categories';
 
 

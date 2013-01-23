@@ -31,5 +31,6 @@ $settings->add(new admin_setting_configtext('course_tree_list/Weeks_After',
         get_string('weeksafter', 'block_course_tree_list'), get_string('descweeksafter', 'block_course_tree_list'),
         2, PARAM_INT));
 
-
+$settings->add(new admin_setting_configcheckbox('course_tree_list/Show_Courses',
+    get_string('showcourses', 'block_course_tree_list'), get_string('descshowcourses', 'block_course_tree_list'),1));
 

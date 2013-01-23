@@ -52,10 +52,10 @@ class block_course_tree_list extends block_base {
     * This method returns a boolean value, indicating whether the block is
     * allowed to have multiple instances in the same page or not.
     *
-    * @return bool Returns false
+    * @return bool Returns true
     */
     function instance_allow_multiple() {
-        return false;
+        return true;
     }
 
     /**
@@ -82,7 +82,8 @@ class block_course_tree_list extends block_base {
 
 		$show_weeks_before = get_config('course_tree_list', 'Weeks_Before');
 		$show_weeks_after = get_config('course_tree_list', 'Weeks_After');
-		
+		$show_courses = get_config('course_tree_list', 'Show_Courses');
+
 		//set a default value if one is not found in the tables - 2 weeks
 		if ($show_weeks_before == '') { $show_weeks_before = 2; }
 		if ($show_weeks_after == '') { $show_weeks_after = 2; }
@@ -196,11 +197,12 @@ class block_course_tree_list extends block_base {
 								}
 
 								$out .= '<li>'.PHP_EOL;
-								$out .= '<label title="'.$cc->name.'" for="category'.$cc->id.'">'.$cc->name.'</label><input type="checkbox"'.$cc->open.' id="category'.$cc->id.'" />'.PHP_EOL;
+                                $url = $CFG->wwwroot.'/course/category.php?id='.$cc->id;
+								$out .= '<label title="'.$cc->name.'" for="category'.$cc->id.'"><a href="'.$url.'" title="'.$cc->name.'">'.$cc->name.'</a></label><input type="checkbox"'.$cc->open.' id="category'.$cc->id.'" />'.PHP_EOL;
 								$out .= '<ol>'.PHP_EOL;
 								$last_course_depth = $cc->depth;
 						}	}
-						if ($course->category == $cc->id) {
+						if ($course->category == $cc->id && $show_courses) {
 							$url = $CFG->wwwroot.'/course/view.php?id='.$course->id;
 							$out .= '<li class="course"><a href="'.$url.'" title="'.$course->shortname.'">'.$course->fullname.'</a></li>'.PHP_EOL;
 					}	}
