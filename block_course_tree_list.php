@@ -198,8 +198,11 @@ class block_course_tree_list extends block_base {
 
 								$out .= '<li>'.PHP_EOL;
                                 $url = $CFG->wwwroot.'/course/category.php?id='.$cc->id;
-								$out .= '<label title="'.$cc->name.'" for="category'.$cc->id.'"><a href="'.$url.'" title="'.$cc->name.'">'.$cc->name.'</a></label><input type="checkbox"'.$cc->open.' id="category'.$cc->id.'" />'.PHP_EOL;
-								$out .= '<ol>'.PHP_EOL;
+								$out .= '<label title="'.$cc->name.'" for="category'.$cc->id.'"><a href="'.$url.'" title="'.$cc->name.'">'.$cc->name.'</a></label>';
+								if (sizeof($cc->sub_ids)>1 || $show_courses){
+                                $out .= '<input type="checkbox"'.$cc->open.' id="category'.$cc->id.'" />'.PHP_EOL;
+                                }
+                                $out .= '<ol>'.PHP_EOL;
 								$last_course_depth = $cc->depth;
 						}	}
 						if ($course->category == $cc->id && $show_courses) {
