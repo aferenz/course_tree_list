@@ -133,7 +133,9 @@ class block_course_tree_list extends block_base {
 		    if (!$courses) {
 				$out .= "Not Enrolled in any courses";
 		    } else {
-				$query = 'SELECT * FROM '.$CFG->prefix.'course_categories ORDER BY sortorder';
+				$query = 'SELECT * FROM '.$CFG->prefix.'course_categories
+				           WHERE visible =1
+				           ORDER BY sortorder';
 				$course_categories = $DB->get_records_sql($query);
 
 				foreach ($course_categories as $cc) {
