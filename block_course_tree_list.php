@@ -177,7 +177,10 @@ class block_course_tree_list extends block_base {
 						foreach ($course_categories as $cc) {
 							if (array_key_exists($course->category, $cc->sub_ids)) {
 								$cc->open = " checked";
-				}	}	}	}
+			            	}
+                        }
+                    }
+                }
 
 				$last_course_id = 0;
 				$last_course_depth = 0;
@@ -210,7 +213,9 @@ class block_course_tree_list extends block_base {
 						if ($course->category == $cc->id && $show_courses) {
 							$url = $CFG->wwwroot.'/course/view.php?id='.$course->id;
 							$out .= '<li class="course"><a href="'.$url.'" title="'.$course->shortname.'">'.$course->fullname.'</a></li>'.PHP_EOL;
-					}	}
+
+                        }
+                    }
 				}
 
 				$out .= '</ol>'.PHP_EOL.PHP_EOL;

@@ -28,7 +28,7 @@ ol.tree li label {
     background: none;
 	cursor: pointer;
 	display: block;
-	padding-left: 20px; /*padding-left: 33px;*/
+	padding-left: 20px; /*original value when 'folder icon' is displayed padding-left: 33px;*/
 	overflow:hidden;
 	text-overflow: ellipsis;
 }
