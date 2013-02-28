@@ -24,10 +24,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-//require_once(dirname(__FILE__).'/consts.php');
-//require_once(dirname(__FILE__).'/blocklib_content_search.php');
-//require_once(dirname(__FILE__).'/blocklib_content_list.php');
-//require_once(dirname(__FILE__).'/blocklib_footer.php');
 
 class block_course_tree_list extends block_base {
     /**
@@ -47,13 +43,13 @@ class block_course_tree_list extends block_base {
     function has_config() {
         return true;
     }
-    
-    /*
-    * This method returns a boolean value, indicating whether the block is
-    * allowed to have multiple instances in the same page or not.
-    *
-    * @return bool Returns true
-    */
+
+    /**
+     * This method returns a boolean value, indicating whether the block is
+     * allowed to have multiple instances in the same page or not.
+     *
+     * @return bool
+     */
     function instance_allow_multiple() {
         return true;
     }
@@ -76,7 +72,12 @@ class block_course_tree_list extends block_base {
         return true;
     }
 
-	function get_content() {
+    /**
+     * Returns the content of the block
+     *
+     * @return null|stdObject
+     */
+    function get_content() {
 		global $CFG, $USER;
 		global $DB, $PAGE;
 
@@ -134,7 +135,7 @@ class block_course_tree_list extends block_base {
 				$out .= "Not Enrolled in any courses";
 		    } else {
 				$query = 'SELECT * FROM '.$CFG->prefix.'course_categories
-				           WHERE visible =1
+				           WHERE visible = 1
 				           ORDER BY sortorder';
 				$course_categories = $DB->get_records_sql($query);
 
@@ -182,7 +183,6 @@ class block_course_tree_list extends block_base {
                     }
                 }
 
-				$last_course_id = 0;
 				$last_course_depth = 0;
 				$out .= PHP_EOL.PHP_EOL.'<ol class="tree">'.PHP_EOL;
 				foreach ($course_categories as $cc) {
@@ -191,8 +191,6 @@ class block_course_tree_list extends block_base {
 						if (array_key_exists($course->category, $cc->sub_ids)) {
 							if ($displayed == 0) {
 								$displayed = 1; 
-								$depth = $cc->depth - 1;
-
 								if ($last_course_depth >= $cc->depth) {
 									do {
 										$out .= '</ol>'.PHP_EOL;

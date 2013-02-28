@@ -23,12 +23,10 @@ ol.tree li input {
 	top: 0;
 }
 ol.tree li label {
-	/* to display a folder icon
-	background:	url([[pix:f/folder]]) 13px 0px no-repeat;*/
-    background: none;
+	background:	url([[pix:f/folder]]) 13px 0px no-repeat;
 	cursor: pointer;
 	display: block;
-	padding-left: 20px; /*original value when 'folder icon' is displayed padding-left: 33px;*/
+	padding-left: 33px;
 	overflow:hidden;
 	text-overflow: ellipsis;
 }
