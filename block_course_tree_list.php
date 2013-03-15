@@ -221,7 +221,9 @@ class block_course_tree_list extends block_base {
 
 		}
 
-		$this->content->text = $out;
+        if ($this->content !== null) {
+            $this->content->text = $out;
+        }
 		
 	}
 
