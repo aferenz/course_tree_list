@@ -162,12 +162,13 @@ class block_course_tree_list extends block_base {
 				//determine if the category should be opened - must contain a course that is available 2 weeks before or 2 weeks after start and end dates
 				$one_week = 7*24*60*60;
 				foreach ($courses as $course) {
-					if ($CFG->version < 2012120300) {
-						$numsections = $course->numsections;
-					} else {
+                    $numsections = $course->numsections;
+					if ($CFG->version >= 2012120300) {
 						$sql = 'SELECT value FROM '.$CFG->prefix.'course_format_options WHERE courseid = '.$course->id.' AND name = \'numsections\'';
 						$rec = $DB->get_records_sql($sql);
-						$numsections = reset($rec)->value;	
+                        if(!isempty($rec)) {
+						    $numsections = reset($rec)->value;
+                        }
 					}
 
 					$startdate = $course->startdate - ($one_week*$show_weeks_before);
