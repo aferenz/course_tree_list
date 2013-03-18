@@ -220,11 +220,8 @@ class block_course_tree_list extends block_base {
 			}
 
 		}
-
-        if ($this->content !== null) {
+            $this->content =  new stdClass;
             $this->content->text = $out;
-        }
-		
 	}
 
 }
